@@ -230,7 +230,7 @@ class CommandLineTools
 				{
 					var target:Platform = null;
 
-					Log.print("", Log.accentColor + "Rebuilding target: " + targetName + "\x1b[0m");
+					Log.info("", Log.accentColor + "Rebuilding target: " + targetName + "\x1b[0m");
 
 					switch (targetName)
 					{
