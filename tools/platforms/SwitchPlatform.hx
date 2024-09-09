@@ -97,12 +97,12 @@ class SwitchPlatform extends PlatformTarget {
 		defaults.merge(project);
 		project = defaults;
 
-		for (excludeArchitecture in projet.excludeArchitectures) {
+		for (excludeArchitecture in project.excludeArchitectures) {
 			project.architectures.remove(excludeArchitecture);
 		}
 
-		targetDirectory = Path.join(project.app.path, project.config.getString("switch.output-directory", "switch"));
-		application = targetDirectory + '/bin/';
+		targetDirectory = Path.join(project.app.path, project.config.getString("switch.output-directory", "switch") || "switch");
+		applicationDirectory = targetDirectory + '/bin/';
 		executablePath = applicationDirectory + project.app.file + '.nro';
 	}
 
@@ -143,7 +143,7 @@ class SwitchPlatform extends PlatformTarget {
 		// Build the project to cpp with devkitpro
 		var hxml = targetDirectory + buildType + ".hxml";
 
-		System.createDirectory(targetDirectory);
+		System.mkdir(targetDirectory);
 
 		var haxeArgs = [hxml];
 		var flags = [];
@@ -182,7 +182,7 @@ class SwitchPlatform extends PlatformTarget {
 			"romfs"
 		];
 
-		System.createDirectory(targetDirectory + "/romfs");
+		System.mkdir(targetDirectory + "/romfs");
 		System.copyFile("icon.jpg", targetDirectory + "/icon.jpg");
 
 		// compile cpp files
