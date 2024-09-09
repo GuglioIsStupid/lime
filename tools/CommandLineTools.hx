@@ -1404,7 +1404,7 @@ class CommandLineTools
 
 	private function initializeProject(project:HXProject = null, targetName:String = ""):HXProject
 	{
-		Log.log("", Log.accentColor + "Initializing project..." + Log.resetColor);
+		Log.info("", Log.accentColor + "Initializing project..." + Log.resetColor);
 
 		var projectFile = "";
 
