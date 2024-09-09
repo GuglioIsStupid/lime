@@ -101,7 +101,12 @@ class SwitchPlatform extends PlatformTarget {
 			project.architectures.remove(excludeArchitecture);
 		}
 
-		targetDirectory = Path.join(project.app.path, ["switch"]);
+		/*
+		platforms/SwitchPlatform.hx:104: characters 31-47 : Null<String> should be Array<String>
+platforms/SwitchPlatform.hx:104: characters 31-47 : ... For function argument 'paths'
+	//targetDirectory = Path.join(project.app.path, ["switch"]);
+		*/
+		targetDirectory = Path.combine(project.app.path, "switch");
 		applicationDirectory = targetDirectory + '/bin/';
 		executablePath = applicationDirectory + project.app.file + '.nro';
 	}
