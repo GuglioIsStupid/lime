@@ -122,9 +122,9 @@ class SwitchPlatform extends PlatformTarget {
 		var haxeArgs = [hxml];
 		var flags = [];
 
-		haxeArgs.push("-D");
+	/* 	haxeArgs.push("-D");
 		haxeArgs.push("HXCPP_M64");
-		flags.push("-DHXCPP_M64");
+		flags.push("-DHXCPP_M64"); */
 
 		// setup .nro structure with nacptool and whatnot
 		var nacptool = Path.combine(devkitproToolsPath, "nacptool");
