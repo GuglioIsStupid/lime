@@ -209,5 +209,10 @@ class SwitchPlatform extends PlatformTarget {
 		System.mkdir(targetDirectory + "/obj");
 		System.mkdir(targetDirectory + "/haxe");
 		System.mkdir(applicationDirectory);
+
+		ProjectHelper.recursiveSmartCopyTemplate(project, "haxe", targetDirectory + "/haxe", context);
+		ProjectHelper.recursiveSmartCopyTemplate(project, targetType + "/hxml", targetDirectory + "/haxe", context);
+
+		ProjectHelper.recursiveSmartCopyTemplate(project, "cpp/static", targetDirectory + "/obj", context);
 	}
 }
