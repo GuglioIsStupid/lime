@@ -123,6 +123,8 @@ class SwitchPlatform extends PlatformTarget {
 
 		haxeArgs.push("-D");
 		haxeArgs.push("HXCPP_M64");
+		haxeArgs.push("-D");
+		haxeArgs.push("HXCPP_CLANG");
 		flags.push("-DHXCPP_M64");
 
 		var nacptoolArgs = [
