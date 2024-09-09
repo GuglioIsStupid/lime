@@ -25,6 +25,9 @@ import sys.io.Process;
 import sys.FileSystem;
 
 class SwitchPlatform extends PlatformTarget {
+	private var executablePath:String;
+	private var applicationDirectory:String;
+
 	public function new(command:String, _project:HXProject, targetFlags:Map<String, String>) {
 		super(command, _project, targetFlags);
 
