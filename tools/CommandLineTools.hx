@@ -631,6 +631,7 @@ class CommandLineTools
 					platform = new AIRPlatform(command, project, targetFlags);
 
 				case SWITCH:
+					Sys.println("RAN SWITCH CODE!");
 					platform = new SwitchPlatform(command, project, targetFlags);
 
 				default:
