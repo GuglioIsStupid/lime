@@ -122,9 +122,9 @@ class SwitchPlatform extends PlatformTarget {
 		var haxeArgs = [hxml];
 		var flags = [];
 
-	/* 	haxeArgs.push("-D");
+		haxeArgs.push("-D");
 		haxeArgs.push("HXCPP_M64");
-		flags.push("-DHXCPP_M64"); */
+		flags.push("-DHXCPP_M64");
 
 		// setup .nro structure with nacptool and whatnot
 		var nacptool = Path.combine(devkitproToolsPath, "nacptool");
@@ -153,7 +153,7 @@ class SwitchPlatform extends PlatformTarget {
 		System.copyFile("icon.jpg", targetDirectory + "/icon.jpg");
 
 		// compile cpp files
-		System.runCommand("", "haxe", haxeArgs);
+		System.runCommand("", "haxe", haxeArgs.concat(["-D", "static_link"]));
 
 		CPPHelper.compile(project, targetDirectory + "/obj", flags);
 		CPPHelper.compile(project, targetDirectory + "/obj", flags, "BuildMain.xml");
