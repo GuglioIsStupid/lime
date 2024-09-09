@@ -125,16 +125,6 @@ class SwitchPlatform extends PlatformTarget {
 		haxeArgs.push("HXCPP_M64");
 		flags.push("-DHXCPP_M64");
 
-		// setup .nro structure with nacptool and whatnot
-		/*
-		nacptool --create <name> <author> <version> <outfile> [options]
-
-		FLAGS:
-		--create : Create control.nacp for use with Switch homebrew applications.
-		Options:
-		--titleid=<titleID> Set the application titleID.
-		*/
-
 		var nacptoolArgs = [
 			"--create",
 			project.meta.title,
@@ -145,19 +135,16 @@ class SwitchPlatform extends PlatformTarget {
 		];
 
 		System.mkdir(targetDirectory + "/romfs");
-		/* System.copyFile("icon.jpg", targetDirectory + "/icon.jpg");
-
-		// compile cpp files
-		System.runCommand("", "haxe", haxeArgs.concat(["-D", "static_link"]));
-
-		CPPHelper.compile(project, targetDirectory + "/obj", flags);
-		CPPHelper.compile(project, targetDirectory + "/obj", flags, "BuildMain.xml"); */
+		System.copyFile("icon.jpg", targetDirectory + "/icon.jpg");
 
 		// create nacp info
 		System.runCommand("", "nacptool", nacptoolArgs);
 
-		// Create the nro file (nxlink is then used to upload it to the switch)
+		// COMPILE CPP FILES
+		System.runCommand("", "haxe", haxeArgs);
 
+		CPPHelper.compile(project, targetDirectory + "/obj", flags);
+		CPPHelper.compile(project, targetDirectory + "/obj", flags, "BuildMain.xml");
 	}
 
 	public override function clean():Void
