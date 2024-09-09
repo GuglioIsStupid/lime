@@ -408,7 +408,7 @@
 			<!-- TODO: Support single binary -->
 			<ext value=".hdll" if="LIME_HASHLINK" />
 
-			<section if="windows || switch">
+			<section if="windows">
 
 				<lib name="gdi32.lib" />
 				<lib name="opengl32.lib" />
