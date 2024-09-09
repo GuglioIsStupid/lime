@@ -186,7 +186,7 @@ class SwitchPlatform extends PlatformTarget {
 		System.runCommand("", "haxe", haxeArgs);
 
 		CPPHelper.compile(project, targetDirectory + "/obj", flags);
-		CPPHelper.link(project, targetDirectory + "/obj", flags, "BuildMain.xml");
+		CPPHelper.compile(project, targetDirectory + "/obj", flags, "BuildMain.xml");
 
 		var nacp = {
 			"application_id": "0x0100" + project.meta.companyId + project.meta.title,
@@ -200,8 +200,6 @@ class SwitchPlatform extends PlatformTarget {
 			"title_id": "0x0100" + project.meta.companyId + project.meta.title,
 			"version": project.meta.version
 		};
-
-		System.writeJson(targetDirectory + "/nacp.json", nacp);
 
 		// create nro
 		System.runCommand("", nacptool, nacptoolArgs);
