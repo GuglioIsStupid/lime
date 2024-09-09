@@ -1404,7 +1404,7 @@ class CommandLineTools
 
 	private function initializeProject(project:HXProject = null, targetName:String = ""):HXProject
 	{
-		Log.error("", Log.accentColor + "Initializing project..." + Log.resetColor);
+		Log.log("", Log.accentColor + "Initializing project..." + Log.resetColor);
 
 		var projectFile = "";
 
@@ -1432,6 +1432,7 @@ class CommandLineTools
 			else
 			{
 				projectFile = findProjectFile(Sys.getCwd());
+				Log.error("", "Project file: " + projectFile);
 
 				if (targetName == "")
 				{
