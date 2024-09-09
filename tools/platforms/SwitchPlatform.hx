@@ -123,9 +123,12 @@ class SwitchPlatform extends PlatformTarget {
 
 		haxeArgs.push("-D");
 		haxeArgs.push("HXCPP_M64");
-		haxeArgs.push("-D");
-		haxeArgs.push("HXCPP_CLANG");
 		flags.push("-DHXCPP_M64");
+
+		// Change cxx to g++
+		haxeArgs.push("-D");
+		haxeArgs.push("HXCPP_GCC");
+		flags.push("-DHXCPP_GCC");
 
 		var nacptoolArgs = [
 			"--create",

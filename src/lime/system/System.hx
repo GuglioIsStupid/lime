@@ -817,6 +817,8 @@ class System
 			__platformName = "Node.js";
 			#elseif js
 			__platformName = "HTML5";
+			#elseif switch
+			__platformName = "Switch";
 			#end
 		}
 
