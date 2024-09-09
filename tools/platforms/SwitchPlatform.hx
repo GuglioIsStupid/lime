@@ -125,11 +125,6 @@ class SwitchPlatform extends PlatformTarget {
 		haxeArgs.push("HXCPP_M64");
 		flags.push("-DHXCPP_M64");
 
-		// Change cxx to g++
-		haxeArgs.push("-D");
-		haxeArgs.push("HXCPP_GCC");
-		flags.push("-DHXCPP_GCC");
-
 		var nacptoolArgs = [
 			"--create",
 			project.meta.title,
@@ -147,6 +142,7 @@ class SwitchPlatform extends PlatformTarget {
 		// COMPILE CPP FILES
 		System.runCommand("", "haxe", haxeArgs);
 
+		// DO NOT COMPILE WITH MSVC. USE g++ INSTEAD
 		CPPHelper.compile(project, targetDirectory + "/obj", flags);
 		// keep in mind the compiled objects for creating the .elf
 		var objects = System.readDirectory(targetDirectory + "/obj", ["o"]);
