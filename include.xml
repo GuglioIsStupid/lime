@@ -13,7 +13,7 @@
 	<define name="lime-cairo" if="native" />
 	<define name="lime-canvas" if="html5" />
 	<define name="lime-cffi" if="native" />
-	<define name="lime-curl" unless="lime-console || lime-switch || emscripten || flash || html5" />
+	<define name="lime-curl" unless="lime-console || switch || emscripten || flash || html5" />
 	<define name="lime-dom" if="html5" />
 	<define name="lime-harfbuzz" if="native" />
 	<define name="lime-howlerjs" if="html5" />
@@ -45,9 +45,9 @@
 	<target name="vita" handler="lime-vita" />
 	<haxelib name="lime-vita" if="vita" />
 
-	<target name="switch" handler="lime-switch" />
+	<!-- <target name="switch" handler="lime-switch" />
 	<haxelib name="lime-switch" if="switch" />
-
+ -->
 	<target name="wiiu" handler="lime-wiiu" />
 	<haxelib name="lime-wiiu" if="wiiu" />
 
@@ -70,6 +70,8 @@
 		<target name="tvos" path="tools/platforms/TVOSPlatform.hx" />
 		<target name="windows" path="tools/platforms/WindowsPlatform.hx" />
 
+		<target name="switch" path="tools/platforms/SwitchPlatform.hx" />
+
 	</section>
 
 	<section unless="display">
@@ -86,7 +88,7 @@
 			<ndll name="zlib" haxelib="hxcpp" unless="emscripten || ios || tvos" />
 		</section>
 
-		<ndll name="lime" if="native" unless="lime-console static_link || lime-switch static_link" />
+		<ndll name="lime" if="native" unless="lime-console static_link || switch static_link" />
 
 		<dependency name="extension-api" path="dependencies/extension-api" if="android" />
 
