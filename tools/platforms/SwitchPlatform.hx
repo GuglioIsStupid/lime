@@ -133,7 +133,7 @@ class SwitchPlatform extends PlatformTarget {
 			project.meta.title,
 			project.meta.company,
 			project.meta.version,
-			targetDirectory + "/romfs/control.nacp",
+			targetDirectory + "/obj/control.nacp",
 			"--titleid=0x0100" + project.meta.companyId + project.meta.title
 		];
 
@@ -147,35 +147,6 @@ class SwitchPlatform extends PlatformTarget {
 
 		// DO NOT COMPILE WITH MSVC. USE g++ INSTEAD
 		CPPHelper.compile(project, targetDirectory + "/obj", flags);
-		// keep in mind the compiled objects for creating the .elf
-		var objects = System.readDirectory(targetDirectory + "/obj", ["o"]);
-
-		// LINK ELF
-		var elfArgs = [
-			"-o",
-			targetDirectory + "/bin/" + project.app.file + ".elf",
-			"-L",
-			devkitproSwitchPath + "/lib",
-			"-L",
-			devkitproSwitchPath + "/lib/aarch64",
-		];
-
-		System.runCommand("", "aarch64-none-elf-g++", elfArgs.concat(objects));
-
-		// COMPILE NRO
-		var nroArgs = [
-			"-o",
-			executablePath,
-			"-n",
-			project.meta.title,
-			"-a",
-			"romfs/romfs.bin",
-			"--nacp=romfs/control.nacp",
-
-
-		];
-
-		System.runCommand("", "elf2nro", nroArgs);
 	}
 
 	public override function clean():Void
