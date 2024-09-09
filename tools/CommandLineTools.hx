@@ -293,6 +293,10 @@ class CommandLineTools
 							target = Platform.WEB_ASSEMBLY;
 							targetFlags.set("webassembly", "");
 
+						case "switch":
+							target = Platform.SWITCH;
+							targetFlags.set("switch", "");
+
 						default:
 							target = cast targetName.toLowerCase();
 					}
