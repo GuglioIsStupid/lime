@@ -113,6 +113,7 @@ class PlatformTarget
 		{
 			CommandHelper.executeCommands(project.preBuildCallbacks);
 
+			Log.info("", "\n" + Log.accentColor + "Running command: BUILD" + Log.resetColor);
 			logCommand("build");
 			build();
 
