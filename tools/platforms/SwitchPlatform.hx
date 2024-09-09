@@ -135,7 +135,6 @@ class SwitchPlatform extends PlatformTarget {
 		];
 
 		System.mkdir(targetDirectory + "/romfs");
-		System.copyFile("icon.jpg", targetDirectory + "/icon.jpg");
 
 		// create nacp info
 		System.runCommand("", "nacptool", nacptoolArgs);
