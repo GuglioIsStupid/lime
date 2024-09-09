@@ -225,7 +225,7 @@ class SwitchPlatform extends PlatformTarget {
 		context.CPPIA_FILE = targetDirectory + "/obj/ApplicationMain.cppia";
 		context.CPP_DIR = targetDirectory + "/obj";
 		context.BUILD_DIR = project.app.path + "/switch"
-	}
 
-	return context;
+		return context;
+	}
 }
