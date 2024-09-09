@@ -101,11 +101,6 @@ class SwitchPlatform extends PlatformTarget {
 			project.architectures.remove(excludeArchitecture);
 		}
 
-		/*
-		platforms/SwitchPlatform.hx:104: characters 31-47 : Null<String> should be Array<String>
-platforms/SwitchPlatform.hx:104: characters 31-47 : ... For function argument 'paths'
-	//targetDirectory = Path.join(project.app.path, ["switch"]);
-		*/
 		targetDirectory = Path.combine(project.app.path, "switch");
 		applicationDirectory = targetDirectory + '/bin/';
 		executablePath = applicationDirectory + project.app.file + '.nro';
@@ -119,7 +114,7 @@ platforms/SwitchPlatform.hx:104: characters 31-47 : ... For function argument 'p
 		var devkitproSwitchPath = devkitpro[2];
 
 		// Build the project to cpp with devkitpro
-		var hxml = targetDirectory + buildType + ".hxml";
+		var hxml = targetDirectory + "/haxe/" + buildType + ".hxml";
 
 		System.mkdir(targetDirectory);
 
