@@ -101,17 +101,17 @@ class SwitchPlatform extends PlatformTarget {
 			project.architectures.remove(excludeArchitecture);
 		}
 
-		targetDirectory = Path.join(project.app.path, project.config.getString("switch.output-directory", "switch") || "switch");
+		targetDirectory = Path.join(project.app.path, "switch");
 		applicationDirectory = targetDirectory + '/bin/';
 		executablePath = applicationDirectory + project.app.file + '.nro';
 	}
 
 	public override function build():Void {
 		// use devkitpro to build the project
-		var devkitpro = System.findDevkitPro();
-		var devkitproPath = devkitpro.path;
-		var devkitproToolsPath = devkitpro.toolsPath;
-		var devkitproSwitchPath = devkitpro.switchPath;
+		var devkitpro = System.findDevkitPro(); // Returns a map with path, toolsPath, and switchPath
+		var devkitproPath = devkitpro.devkitproPath;
+		var devkitproToolsPath = devkitpro.devkitproToolsPath;
+		var devkitproSwitchPath = devkitpro.devkitproSwitchPath;
 
 		/*
 		if (hostPlatform == WINDOWS)
