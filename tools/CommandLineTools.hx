@@ -582,6 +582,7 @@ class CommandLineTools
 		{
 			var platform:PlatformTarget = null;
 
+			Log.info("", Log.accentColor + "Using target platform: " + Std.string(project.target).toUpperCase() + "\x1b[0m");
 			switch (project.target)
 			{
 				case ANDROID:
@@ -631,7 +632,7 @@ class CommandLineTools
 					platform = new AIRPlatform(command, project, targetFlags);
 
 				case SWITCH:
-					Sys.println("RAN SWITCH CODE!");
+					Log.info("", Log.accentColor + "Using target platform: " + Std.string(project.target).toUpperCase() + "\x1b[0m");
 					platform = new SwitchPlatform(command, project, targetFlags);
 
 				default:
