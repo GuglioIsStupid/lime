@@ -230,7 +230,7 @@ class CommandLineTools
 				{
 					var target:Platform = null;
 
-					Log.info("", Log.accentColor + "Rebuilding target: " + targetName + "\x1b[0m");
+					Log.print("", Log.accentColor + "Rebuilding target: " + targetName + "\x1b[0m");
 
 					switch (targetName)
 					{
@@ -1404,7 +1404,7 @@ class CommandLineTools
 
 	private function initializeProject(project:HXProject = null, targetName:String = ""):HXProject
 	{
-		Log.info("", Log.accentColor + "Initializing project..." + Log.resetColor);
+		Log.error("", Log.accentColor + "Initializing project..." + Log.resetColor);
 
 		var projectFile = "";
 
