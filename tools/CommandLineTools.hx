@@ -630,6 +630,9 @@ class CommandLineTools
 				case AIR:
 					platform = new AIRPlatform(command, project, targetFlags);
 
+				case SWITCH:
+					platform = new SwitchPlatform(command, project, targetFlags);
+
 				default:
 			}
 
@@ -1580,6 +1583,10 @@ class CommandLineTools
 			case "winrt":
 				target = Platform.WINDOWS;
 				targetFlags.set("winrt", "");
+
+			case "switch":
+				target = Platform.SWITCH;
+				targetFlags.set("switch", "");
 
 			default:
 				target = cast targetName.toLowerCase();
