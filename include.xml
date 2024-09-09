@@ -57,8 +57,6 @@
 	<target name="console-pc" handler="lime-console-pc" />
 	<haxelib name="lime-console-pc" if="console-pc" />
 
-	<target name="switch" path="tools/platforms/SwitchPlatform.hx" />
-
 	<section if="hxp" unless="lime-tools">
 
 		<target name="air" path="tools/platforms/AIRPlatform.hx" />
@@ -71,6 +69,7 @@
 		<target name="mac" path="tools/platforms/MacPlatform.hx" />
 		<target name="tvos" path="tools/platforms/TVOSPlatform.hx" />
 		<target name="windows" path="tools/platforms/WindowsPlatform.hx" />
+		<target name="switch" path="tools/platforms/SwitchPlatform.hx" />
 
 	</section>
 
