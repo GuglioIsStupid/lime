@@ -530,7 +530,6 @@ class CommandLineTools
 
 		if (project.targetHandlers.exists(Std.string(project.target)))
 		{
-			Log.info("", Log.accentColor + "Running command: " + command.toUpperCase() + "\x1b[0m");
 			if (command == "build" || command == "test")
 			{
 				CommandHelper.executeCommands(project.preBuildCallbacks);
