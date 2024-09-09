@@ -17,7 +17,6 @@
 	<set name="LIME_HARFBUZZ" value="1" unless="winrt" />
 	<!-- <set name="LIME_HASHLINK" value="1" if="windows || mac || linux" /> -->
 	<set name="LIME_HASHLINK" value="0" />
-	<set name="LIME_HASHLINK" value="1" if="windows || mac || linux" />
 
 	<set name="LIME_LZMA" value="1" />
 	<set name="LIME_MBEDTLS" value="1" unless="emscripten || winrt" />
@@ -122,14 +121,6 @@
 				<file name="src/text/harfbuzz/HarfbuzzBindings.cpp" />
 
 			</section>
-
-		</section>
-
-		<compilerflag value="-I${NATIVE_TOOLKIT_PATH}/hashlink/src" />
-
-		<section if="LIME_HASHLINK">
-
-			<compilerflag value="-DLIME_HASHLINK" />
 
 		</section>
 
@@ -408,7 +399,6 @@
 			<ext value=".ndll" if="windows || mac || linux" />
 
 			<!-- TODO: Support single binary -->
-			<ext value=".hdll" if="LIME_HASHLINK" />
 
 			<section if="windows">
 
@@ -439,8 +429,6 @@
 				<lib name="Xinput.lib" if="winrt" />
 				<lib name="DXGI.lib" if="winrt" />
 
-				<lib name="-libpath:../templates/bin/hl/${BINDIR}" if="LIME_HASHLINK" />
-				<lib name="libhl.lib" if="LIME_HASHLINK" />
 				<!-- <lib name="-delayload:libhl.dll" /> -->
 
 			</section>
@@ -453,13 +441,10 @@
 				<lib name="-lgc" if="LIME_NEKO" />
 				<lib name="-lm" if="LIME_NEKO" />
 
-				<lib name="-L../templates/bin/hl/${BINDIR}" if="LIME_HASHLINK" />
-				<lib name="-lhl" if="LIME_HASHLINK" />
 
 			</section>
 
 			<section if="mac">
-				<vflag name="-install_name" value="@executable_path/lime.hdll" if="LIME_HASHLINK"/>
 				<!--
 					starting in xcode 15, rpath doesn't automatically include
 					/usr/local/lib, but we need it for neko
@@ -485,8 +470,6 @@
 				<lib name="/opt/local/lib/libgc.a" if="LIME_NEKO" />
 				<lib name="-lm" if="LIME_NEKO" />
 
-				<lib name="-L../templates/bin/hl/${BINDIR}" if="LIME_HASHLINK" />
-				<lib name="-lhl" if="LIME_HASHLINK" />
 
 			</section>
 
