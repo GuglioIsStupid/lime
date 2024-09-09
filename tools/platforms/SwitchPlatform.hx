@@ -143,7 +143,7 @@ class SwitchPlatform extends PlatformTarget {
 		System.runCommand("", "haxe", haxeArgs);
 
 		CPPHelper.compile(project, targetDirectory + "/obj", flags.concat(["-Dstatic_link"]));
-					CPPHelper.compile(project, targetDirectory + "/obj", flags, "BuildMain.xml");
+		CPPHelper.compile(project, targetDirectory + "/obj", flags, "BuildMain.xml");
 	}
 
 	public override function clean():Void
@@ -211,9 +211,10 @@ class SwitchPlatform extends PlatformTarget {
 		System.mkdir(applicationDirectory);
 
 		var context = generateContext();
+		context.OUTPUT_DIR = targetDirectory;
 
 		ProjectHelper.recursiveSmartCopyTemplate(project, "haxe", targetDirectory + "/haxe", context);
-		ProjectHelper.recursiveSmartCopyTemplate(project, "cpp" + "/hxml", targetDirectory + "/haxe", context);
+		ProjectHelper.recursiveSmartCopyTemplate(project, "cpp/hxml", targetDirectory + "/haxe", context);
 
 		ProjectHelper.recursiveSmartCopyTemplate(project, "cpp/static", targetDirectory + "/obj", context);
 	}
