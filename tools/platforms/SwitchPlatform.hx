@@ -224,7 +224,7 @@ class SwitchPlatform extends PlatformTarget {
 		context.HL_FILE = targetDirectory + "/obj/ApplicationMain" + (project.defines.exists("hlc") ? ".c" : ".hl");
 		context.CPPIA_FILE = targetDirectory + "/obj/ApplicationMain.cppia";
 		context.CPP_DIR = targetDirectory + "/obj";
-		context.BUILD_DIR = project.app.path + "/switch"
+		context.BUILD_DIR = project.app.path + "/switch";
 
 		return context;
 	}
