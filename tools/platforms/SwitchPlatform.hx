@@ -128,23 +128,22 @@ class SwitchPlatform extends PlatformTarget {
 		// setup .nro structure with nacptool and whatnot
 		var nacptool = Path.combine(devkitproToolsPath, "nacptool");
 
+		/*
+		nacptool --create <name> <author> <version> <outfile> [options]
+
+		FLAGS:
+		--create : Create control.nacp for use with Switch homebrew applications.
+		Options:
+		--titleid=<titleID> Set the application titleID.
+		*/
+
 		var nacptoolArgs = [
 			"--create",
-			"nro",
-			"--name",
 			project.meta.title,
-			"--author",
 			project.meta.company,
-			"--version",
 			project.meta.version,
-			"--titleid",
-			"0x0100" + project.meta.companyId + project.meta.title,
-			"--icon",
-			"icon.jpg",
-			"--nacp",
-			"nacp.json",
-			"--romfsdir",
-			"romfs"
+			targetDirectory + "/romfs/control.nacp",
+			"--titleid=0x0100" + project.meta.companyId + project.meta.title
 		];
 
 		System.mkdir(targetDirectory + "/romfs");
