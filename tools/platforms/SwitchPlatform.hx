@@ -115,7 +115,6 @@ class SwitchPlatform extends PlatformTarget {
 
 		// Build the project to cpp with devkitpro
 		var hxml = targetDirectory + "/haxe/" + buildType + ".hxml";
-		Log.error("", "Building project to cpp with devkitpro");
 
 		System.mkdir(targetDirectory);
 
@@ -128,7 +127,6 @@ class SwitchPlatform extends PlatformTarget {
 
 		// setup .nro structure with nacptool and whatnot
 		var nacptool = Path.combine(devkitproToolsPath, "nacptool");
-		var nxlink = Path.combine(devkitproToolsPath, "nxlink");
 
 		var nacptoolArgs = [
 			"--create",
@@ -150,13 +148,13 @@ class SwitchPlatform extends PlatformTarget {
 		];
 
 		System.mkdir(targetDirectory + "/romfs");
-		System.copyFile("icon.jpg", targetDirectory + "/icon.jpg");
+		/* System.copyFile("icon.jpg", targetDirectory + "/icon.jpg");
 
 		// compile cpp files
 		System.runCommand("", "haxe", haxeArgs.concat(["-D", "static_link"]));
 
 		CPPHelper.compile(project, targetDirectory + "/obj", flags);
-		CPPHelper.compile(project, targetDirectory + "/obj", flags, "BuildMain.xml");
+		CPPHelper.compile(project, targetDirectory + "/obj", flags, "BuildMain.xml"); */
 
 		var nacp = {
 			"application_id": "0x0100" + project.meta.companyId + project.meta.title,
@@ -171,11 +169,10 @@ class SwitchPlatform extends PlatformTarget {
 			"version": project.meta.version
 		};
 
-		// create nro
+		// create nacp info
 		System.runCommand("", nacptool, nacptoolArgs);
 
-		// link nro
-		System.runCommand("", nxlink, ["-o", executablePath, targetDirectory + "/obj/Main.nro"]);
+		// Create the nro file (nxlink is then used to upload it to the switch)
 
 	}
 
