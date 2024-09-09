@@ -143,6 +143,60 @@ class SwitchPlatform extends PlatformTarget {
 		System.runCommand("", "haxe", haxeArgs);
 
 		CPPHelper.compile(project, targetDirectory + "/obj", flags);
+
+		// CREATE .ELF
+		var elfArgs = [
+			"-o",
+			targetDirectory + "/bin/" + project.app.file + ".elf",
+			targetDirectory + "/obj/ApplicationMain.cpp.o",
+			"-L" + devkitproSwitchPath + "/lib",
+			"-lSDL2",
+			"-lSDL2_image",
+			"-lSDL2_ttf",
+			"-lSDL2_mixer",
+			"-lSDL2_gfx",
+			"-lSDL2_net",
+			"-lwebp",
+			"-lfreetype",
+			"-lpng",
+			"-lz",
+			"-lm",
+			"-lcurl",
+			"-lssl",
+			"-lcrypto",
+			"-ljpeg",
+			"-lmpg123",
+			"-lvorbisidec",
+			"-logg",
+			"-lphysfs",
+			"-lglad",
+			"-lEGL",
+			"-lglapi",
+			"-lglslc",
+			"-lglu",
+			"-lglut",
+			"-lglew",
+			"-lglfw",
+			"-lhidapi",
+			"-lswitch",
+			"-lssl",
+			"-lcrypto"
+		];
+
+		System.runCommand("", "gcc", elfArgs);
+
+		// COMPILE NRO
+		var nroArgs = [
+			"-o",
+			executablePath,
+			"-n",
+			project.meta.title,
+			"-a",
+			targetDirectory + "/romfs",
+			targetDirectory + "/obj/ApplicationMain.cpp.o"
+		];
+
+		System.runCommand("", "elf2nro", nroArgs);
 	}
 
 	public override function clean():Void
