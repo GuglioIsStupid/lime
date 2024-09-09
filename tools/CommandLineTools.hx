@@ -79,6 +79,8 @@ class CommandLineTools
 			Sys.println("");
 		}
 
+		Log.info("", Log.accentColor + "Running command: " + command.toUpperCase() + "\x1b[0m");
+
 		switch (command)
 		{
 			case "":
