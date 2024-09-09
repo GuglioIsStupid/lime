@@ -182,6 +182,12 @@ class SwitchPlatform extends PlatformTarget {
 		System.createDirectory(targetDirectory + "/romfs");
 		System.copyFile("icon.jpg", targetDirectory + "/icon.jpg");
 
+		// compile cpp files
+		System.runCommand("", "haxe", haxeArgs);
+
+		CPPHelper.compile(project, targetDirectory + "/obj", flags);
+		CPPHelper.link(project, targetDirectory + "/obj", flags, "BuildMain.xml");
+
 		var nacp = {
 			"application_id": "0x0100" + project.meta.companyId + project.meta.title,
 			"attributes": {
@@ -196,18 +202,13 @@ class SwitchPlatform extends PlatformTarget {
 		};
 
 		System.writeJson(targetDirectory + "/nacp.json", nacp);
+
+		// create nro
 		System.runCommand("", nacptool, nacptoolArgs);
 
-		var nxlinkArgs = [
-			"-o",
-			executablePath,
-			"-b",
-			"romfs/romfs.bin",
-			"-s",
-			"romfs/romfs.bin"
-		];
+		// link nro
+		System.runCommand("", nxlink, ["-o", executablePath, targetDirectory + "/obj/Main.nro"]);
 
-		System.runCommand("", nxlink, nxlinkArgs);
 	}
 
 	public override function clean():Void
