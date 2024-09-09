@@ -138,7 +138,7 @@ class SwitchPlatform extends PlatformTarget {
 
 		System.createDirectory(targetDirectory);
 
-		var haxeArgs = [hxml]
+		var haxeArgs = [hxml];
 		var flags = [];
 
 		haxeArgs.push("-D");
