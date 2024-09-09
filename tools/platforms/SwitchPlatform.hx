@@ -101,7 +101,7 @@ class SwitchPlatform extends PlatformTarget {
 			project.architectures.remove(excludeArchitecture);
 		}
 
-		targetDirectory = Path.join(project.app.path, "switch");
+		tagetDirectory = Path.join(project.app.path, ["switch"]);
 		applicationDirectory = targetDirectory + '/bin/';
 		executablePath = applicationDirectory + project.app.file + '.nro';
 	}
@@ -124,13 +124,6 @@ class SwitchPlatform extends PlatformTarget {
 		haxeArgs.push("-D");
 		haxeArgs.push("HXCPP_M64");
 		flags.push("-DHXCPP_M64");
-
-		/* System.runCommand("", "haxe", haxeArgs.concat(["-D", "static_link"]));
-
-		CPPHelper.compile(project, targetDirectory + "/obj", flags.concat(["-Dstatic_link"]));
-		CPPHelper.link(project, targetDirectory + "/obj", flags, "BuildMain.xml");
-
-		System.copyFile(targetDirectory + "/obj/Main.nro", executablePath); */
 
 		// setup .nro structure with nacptool and whatnot
 		var nacptool = Path.combine(devkitproToolsPath, "nacptool");
