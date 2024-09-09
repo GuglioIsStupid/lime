@@ -1776,7 +1776,7 @@ class CommandLineTools
 
 		if (project == null || (command != "rebuild" && project.sources.length == 0 && !FileSystem.exists(project.app.main + ".hx")))
 		{
-			Log.error("You must have a \"project.xml\" file or specify another valid project file when using the '" + command + "' command");
+			Log.error("You must have a \"project.xml\" file or specify another valid project file when using the '" + command + "' command, #2");
 			return null;
 		}
 
