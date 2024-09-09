@@ -109,36 +109,9 @@ class SwitchPlatform extends PlatformTarget {
 	public override function build():Void {
 		// use devkitpro to build the project
 		var devkitpro = System.findDevkitPro(); // Returns a map with path, toolsPath, and switchPath
-		var devkitproPath = devkitpro["devkitproPath"];
-		var devkitproToolsPath = devkitpro["devkitproToolsPath"];
-		var devkitproSwitchPath = devkitpro["devkitproSwitchPath"];
-
-		/*
-		if (hostPlatform == WINDOWS)
-		{
-			var devkitproPath = Sys.getEnv("DEVKITPRO");
-
-			if (devkitproPath == null)
-			{
-				devkitproPath = "C:/devkitPro";
-			}
-
-			devkitproToolsPath = Path.combine(devkitproPath, "tools/bin");
-			devkitproSwitchPath = Path.combine(devkitproPath, "libnx");
-		}
-		else if (hostPlatform == MAC)
-		{
-			devkitproPath = "/opt/devkitpro";
-			devkitproToolsPath = "/opt/devkitpro/tools/bin";
-			devkitproSwitchPath = "/opt/devkitpro/libnx";
-		}
-		else if (hostPlatform == LINUX)
-		{
-			devkitproPath = "/opt/devkitpro";
-			devkitproToolsPath = "/opt/devkitpro/tools/bin";
-			devkitproSwitchPath = "/opt/devkitpro/libnx";
-		}
-			*/
+		var devkitproPath = devkitpro[0];
+		var devkitproToolsPath = devkitpro[1];
+		var devkitproSwitchPath = devkitpro[2];
 
 		// Build the project to cpp with devkitpro
 		var hxml = targetDirectory + buildType + ".hxml";
