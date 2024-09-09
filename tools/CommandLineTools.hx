@@ -1432,7 +1432,6 @@ class CommandLineTools
 			else
 			{
 				projectFile = findProjectFile(Sys.getCwd());
-				Log.error("", "Project file: " + projectFile);
 
 				if (targetName == "")
 				{
