@@ -101,7 +101,7 @@ class SwitchPlatform extends PlatformTarget {
 			project.architectures.remove(excludeArchitecture);
 		}
 
-		tagetDirectory = Path.join(project.app.path, ["switch"]);
+		targetDirectory = Path.join(project.app.path, ["switch"]);
 		applicationDirectory = targetDirectory + '/bin/';
 		executablePath = applicationDirectory + project.app.file + '.nro';
 	}
