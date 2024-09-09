@@ -210,9 +210,22 @@ class SwitchPlatform extends PlatformTarget {
 		System.mkdir(targetDirectory + "/haxe");
 		System.mkdir(applicationDirectory);
 
+		var context = generateContext();
+
 		ProjectHelper.recursiveSmartCopyTemplate(project, "haxe", targetDirectory + "/haxe", context);
 		ProjectHelper.recursiveSmartCopyTemplate(project, targetType + "/hxml", targetDirectory + "/haxe", context);
 
 		ProjectHelper.recursiveSmartCopyTemplate(project, "cpp/static", targetDirectory + "/obj", context);
 	}
+
+	private function generateContext():Dynamic {
+		var context = project.templateContext;
+
+		context.HL_FILE = targetDirectory + "/obj/ApplicationMain" + (project.defines.exists("hlc") ? ".c" : ".hl");
+		context.CPPIA_FILE = targetDirectory + "/obj/ApplicationMain.cppia";
+		context.CPP_DIR = targetDirectory + "/obj";
+		context.BUILD_DIR = project.app.path + "/switch"
+	}
+
+	return context;
 }
