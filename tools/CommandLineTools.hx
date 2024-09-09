@@ -1441,7 +1441,7 @@ class CommandLineTools
 
 			if (projectFile == "")
 			{
-				Log.error("You must have a \"project.xml\" file or specify another valid project file when using the '" + command + "' command");
+				Log.error("You must have a \"project.xml\" file or specify another valid project file when using the '" + command + "' command #1");
 				return null;
 			}
 			else
