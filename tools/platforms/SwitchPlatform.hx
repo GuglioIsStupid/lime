@@ -126,8 +126,6 @@ class SwitchPlatform extends PlatformTarget {
 		flags.push("-DHXCPP_M64");
 
 		// setup .nro structure with nacptool and whatnot
-		var nacptool = Path.combine(devkitproToolsPath, "nacptool");
-
 		/*
 		nacptool --create <name> <author> <version> <outfile> [options]
 
@@ -155,21 +153,8 @@ class SwitchPlatform extends PlatformTarget {
 		CPPHelper.compile(project, targetDirectory + "/obj", flags);
 		CPPHelper.compile(project, targetDirectory + "/obj", flags, "BuildMain.xml"); */
 
-		var nacp = {
-			"application_id": "0x0100" + project.meta.companyId + project.meta.title,
-			"attributes": {
-				"supported_languages": ["en"],
-				"supported_regions": ["WORLD"]
-			},
-			"icon": "icon.jpg",
-			"nacp_version": 1,
-			"title": project.meta.title,
-			"title_id": "0x0100" + project.meta.companyId + project.meta.title,
-			"version": project.meta.version
-		};
-
 		// create nacp info
-		System.runCommand("", nacptool, nacptoolArgs);
+		System.runCommand("", "nacptool", nacptoolArgs);
 
 		// Create the nro file (nxlink is then used to upload it to the switch)
 
