@@ -143,16 +143,20 @@ class SwitchPlatform extends PlatformTarget {
 		System.runCommand("", "haxe", haxeArgs);
 
 		CPPHelper.compile(project, targetDirectory + "/obj", flags);
+		// keep in mind the compiled objects for creating the .elf
+		var objects = System.readDirectory(targetDirectory + "/obj", ["o"]);
 
-		// CREATE .ELF
+		// LINK ELF
 		var elfArgs = [
 			"-o",
 			targetDirectory + "/bin/" + project.app.file + ".elf",
-			targetDirectory + "/obj/ApplicationMain.cpp.o",
-			"-L" + devkitproSwitchPath + "/lib"
+			"-L",
+			devkitproSwitchPath + "/lib",
+			"-L",
+			devkitproSwitchPath + "/lib/aarch64",
 		];
 
-		System.runCommand("", "gcc", elfArgs);
+		System.runCommand("", "aarch64-none-elf-g++", elfArgs.concat(objects));
 
 		// COMPILE NRO
 		var nroArgs = [
@@ -161,8 +165,10 @@ class SwitchPlatform extends PlatformTarget {
 			"-n",
 			project.meta.title,
 			"-a",
-			targetDirectory + "/romfs",
-			targetDirectory + "/obj/ApplicationMain.cpp.o"
+			"romfs/romfs.bin",
+			"--nacp=romfs/control.nacp",
+
+
 		];
 
 		System.runCommand("", "elf2nro", nroArgs);
