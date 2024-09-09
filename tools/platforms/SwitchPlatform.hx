@@ -109,9 +109,9 @@ class SwitchPlatform extends PlatformTarget {
 	public override function build():Void {
 		// use devkitpro to build the project
 		var devkitpro = System.findDevkitPro(); // Returns a map with path, toolsPath, and switchPath
-		var devkitproPath = devkitpro.devkitproPath;
-		var devkitproToolsPath = devkitpro.devkitproToolsPath;
-		var devkitproSwitchPath = devkitpro.devkitproSwitchPath;
+		var devkitproPath = devkitpro["devkitproPath"];
+		var devkitproToolsPath = devkitpro["devkitproToolsPath"];
+		var devkitproSwitchPath = devkitpro["devkitproSwitchPath"];
 
 		/*
 		if (hostPlatform == WINDOWS)
