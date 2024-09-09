@@ -376,12 +376,12 @@
 
 		<lib name="-lhl" unless="windows" />
 		<lib name="-L${OUTPUT_DIR}/${BINDIR}" unless="windows" />
-		<lib name="-libpath:${OUTPUT_DIR}/${BINDIR}" if="windows || switch" />
-		<lib name="libhl.lib" if="windows || switch" />
+		<lib name="-libpath:${OUTPUT_DIR}/${BINDIR}" if="windows" />
+		<lib name="libhl.lib" if="windows" />
 
-		<lib name="Advapi32.lib" if="windows || switch" />
-		<lib name="Crypt32.lib" if="windows || switch" />
-		<lib name="ws2_32.lib" if="windows || switch" />
+		<lib name="Advapi32.lib" if="windows" />
+		<lib name="Crypt32.lib" if="windows" />
+		<lib name="ws2_32.lib" if="windows" />
 
 		<!-- Find homebrews mbedtls -->
 		<lib name="-L/usr/local/lib" if="mac" />
