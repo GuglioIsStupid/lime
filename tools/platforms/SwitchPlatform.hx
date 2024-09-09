@@ -74,7 +74,7 @@ class SwitchPlatform extends PlatformTarget {
 			title: ""
 		};
 
-		defaults.architectures = [Architecture.X64]
+		defaults.architectures = [Architecture.X64];
 		defaults.window.width = 0;
 		defaults.window.height = 0;
 		defaults.window.fullscreen = true;
