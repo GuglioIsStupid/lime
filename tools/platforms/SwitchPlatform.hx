@@ -143,7 +143,6 @@ class SwitchPlatform extends PlatformTarget {
 		System.runCommand("", "haxe", haxeArgs);
 
 		CPPHelper.compile(project, targetDirectory + "/obj", flags);
-		CPPHelper.compile(project, targetDirectory + "/obj", flags, "BuildMain.xml");
 	}
 
 	public override function clean():Void
