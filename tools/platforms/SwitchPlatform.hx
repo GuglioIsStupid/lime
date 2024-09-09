@@ -115,6 +115,7 @@ class SwitchPlatform extends PlatformTarget {
 
 		// Build the project to cpp with devkitpro
 		var hxml = targetDirectory + "/haxe/" + buildType + ".hxml";
+		Sys.println("Building project to cpp with devkitpro");
 
 		System.mkdir(targetDirectory);
 
