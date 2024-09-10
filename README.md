@@ -12,6 +12,8 @@ Install my forks of hxcpp, lime, and hxp
 
 Uhhh I can't really explain the rest, idrk what I even did to make it work LMFAO uhhh yeah sorry
 
+Currently, this can only work on windows systems. Forks are GREATLY appreciated to those who want to contribute, I am new to this type of stuff!!
+
 ===
 
 Lime is a flexible, lightweight layer for Haxe cross-platform developers.
