@@ -3,6 +3,15 @@
 Lime
 ====
 
+# How to use
+
+Install my forks of hxcpp, lime, and hxp
+- https://github.com/GuglioIsStupid/hxcpp-nx
+- https://github.com/GuglioIsStupid/lime-nx
+- https://github.com/GuglioIsStupid/hxp-nx
+
+Uhhh I can't really explain the rest, idrk what I even did to make it work LMFAO uhhh yeah sorry
+
 Lime is a flexible, lightweight layer for Haxe cross-platform developers.
 
 Lime supports native, Flash and HTML5 targets with unified support for:
