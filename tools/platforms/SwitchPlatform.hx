@@ -146,7 +146,8 @@ class SwitchPlatform extends PlatformTarget {
 		System.runCommand("", "haxe", haxeArgs);
 
 		// DO NOT COMPILE WITH MSVC. USE g++ INSTEAD
-		CPPHelper.compile(project, targetDirectory + "/obj", flags);
+		CPPHelper.compile(project, targetDirectory + "/obj", flags.concat(["-Dstatic_link"]));
+		CPPHelper.compile(project, targetDirectory + "/obj", flags, "BuildMain.xml");
 	}
 
 	public override function clean():Void
@@ -218,6 +219,7 @@ class SwitchPlatform extends PlatformTarget {
 
 		ProjectHelper.recursiveSmartCopyTemplate(project, "haxe", targetDirectory + "/haxe", context);
 		ProjectHelper.recursiveSmartCopyTemplate(project, "cpp/hxml", targetDirectory + "/haxe", context);
+		ProjectHelper.recursiveSmartCopyTemplate(project, "cpp/static", targetDirectory + "/obj", context);
 	}
 
 	private function generateContext():Dynamic {
