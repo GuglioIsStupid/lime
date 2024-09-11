@@ -123,7 +123,6 @@ class SwitchPlatform extends PlatformTarget {
 
 		haxeArgs.push("-D");
 		haxeArgs.push("HXCPP_M64");
-		flags.push("-DHXCPP_M64");
 		//HXCPP_MINGW
 		haxeArgs.push("-D");
 		haxeArgs.push("HXCPP_MINGW");
@@ -146,8 +145,8 @@ class SwitchPlatform extends PlatformTarget {
 		System.runCommand("", "haxe", haxeArgs).concat(["-D", "static_link"]);
 
 		// DO NOT COMPILE WITH MSVC. USE g++ INSTEAD
-		CPPHelper.compile(project, targetDirectory + "/obj", flags.concat(["-Dstatic_link"]));
-		CPPHelper.compile(project, targetDirectory + "/obj", flags, "BuildMain.xml");
+		CPPHelper.compile(project, targetDirectory + "/obj", ["-DHXCPP_M64", "-Dstatic_link"], "BuildMain.xml");
+		CPPHelper.compile(project, targetDirectory + "/obj", ["-DHXCPP_M64"], "BuildMain.xml");
 	}
 
 	public override function clean():Void
