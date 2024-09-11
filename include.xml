@@ -12,15 +12,15 @@
 
 	<define name="lime-cairo" if="native" unless="switch"/>
 	<define name="lime-canvas" if="html5" />
-	<define name="lime-cffi" if="native" unless="switch"/>
-	<define name="lime-curl" unless="lime-console || switch || emscripten || flash || html5" />
+	<define name="lime-cffi" if="native"/>
+	<!-- <define name="lime-curl" unless="lime-console || switch || emscripten || flash || html5" /> -->
 	<define name="lime-dom" if="html5" />
 	<define name="lime-harfbuzz" if="native" />
 	<define name="lime-howlerjs" if="html5" />
 	<define name="lime-html5" if="html5" />
 	<define name="lime-native" if="native" />
 	<define name="lime-openal" unless="lime-console || flash || html5" />
-	<define name="lime-opengl" if="desktop || switch-add" unless="html5" />
+	<define name="lime-opengl" if="desktop || switch" unless="html5" />
 	<define name="lime-opengles" if="emscripten || mobile" />
 	<define name="lime-vorbis" if="native" />
 	<define name="lime-webgl" if="html5" />

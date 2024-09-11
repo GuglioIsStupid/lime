@@ -229,4 +229,23 @@ class SwitchPlatform extends PlatformTarget {
 
 		return context;
 	}
+
+	public override function rebuild():Void {
+		var commands = [];
+
+		commands.push([
+			"-Dtoolchain=switch",
+			"-DBINDIR=Switch",
+			"-DCXX=aarch64-none-elf-g++",
+			"-DAR=aarch64-none-elf-ar",
+			"-DSTRIP=aarch64-none-elf-strip",
+			"-DRANLIB=aarch64-none-elf-ranlib",
+			"-DPLATFORM=switch",
+			// use newer c++ version
+			"-DHXCPP_M64",
+			"-D__SWITCH__",
+		]);
+
+		CPPHelper.rebuild(project, commands);
+	}
 }

@@ -640,7 +640,6 @@ class CommandLineTools
 					platform = new AIRPlatform(command, project, targetFlags);
 
 				case SWITCH:
-					Log.info("", Log.accentColor + "Using target platform: " + Std.string(project.target).toUpperCase() + "\x1b[0m");
 					platform = new SwitchPlatform(command, project, targetFlags);
 
 				default:
