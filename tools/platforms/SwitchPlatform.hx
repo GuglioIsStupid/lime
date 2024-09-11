@@ -143,7 +143,7 @@ class SwitchPlatform extends PlatformTarget {
 		System.runCommand("", "nacptool", nacptoolArgs);
 
 		// COMPILE CPP FILES
-		System.runCommand("", "haxe", haxeArgs);
+		System.runCommand("", "haxe", haxeArgs).concat(["-D", "static_link"]);
 
 		// DO NOT COMPILE WITH MSVC. USE g++ INSTEAD
 		CPPHelper.compile(project, targetDirectory + "/obj", flags.concat(["-Dstatic_link"]));
