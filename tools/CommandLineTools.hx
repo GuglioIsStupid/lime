@@ -298,7 +298,7 @@ class CommandLineTools
 						case "switch":
 							target = Platform.SWITCH;
 							targetFlags.set("switch", "");
-							targetFlags.set("cpp", "")
+							targetFlags.set("cpp", "");
 
 						default:
 							target = cast targetName.toLowerCase();
