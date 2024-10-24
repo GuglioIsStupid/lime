@@ -679,8 +679,8 @@ namespace lime {
 
 
 	FILE_HANDLE *fdopen (int fd, const char *mode) {
-
-		#ifndef HX_WINDOWS || HX_SWITCH
+		// f not HX_WINDOWS or HX_SWITCH
+		#ifndef (HX_WINDOWS || HX_SWITCH)
 
 		System::GCEnterBlocking ();
 		FILE* fp = lime::fdopen (fd, mode);
