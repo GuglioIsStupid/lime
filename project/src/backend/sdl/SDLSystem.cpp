@@ -590,8 +590,8 @@ namespace lime {
 				off_t outStart;
 				off_t outLength;
 				fd = AAsset_openFileDescriptor ((AAsset*)(((SDL_RWops*)handle)->hidden.androidio.asset), &outStart, &outLength);
-				FILE* file = ::fdopen (fd, "rb");
-				::fseek (file, outStart, 0);
+				FILE* file = lime::fdopen (fd, "rb");
+				lime::fseek (file, outStart, 0);
 				System::GCExitBlocking ();
 				return file;
 				#endif
@@ -664,7 +664,7 @@ namespace lime {
 		if (stream) {
 
 			System::GCEnterBlocking ();
-			int code = ::fclose ((FILE*)stream->handle);
+			int code = lime::fclose ((FILE*)stream->handle);
 			delete stream;
 			System::GCExitBlocking ();
 			return code;
@@ -683,7 +683,7 @@ namespace lime {
 		#ifndef HX_WINDOWS
 
 		System::GCEnterBlocking ();
-		FILE* fp = ::fdopen (fd, mode);
+		FILE* fp = lime::fdopen (fd, mode);
 		SDL_RWops *result = SDL_RWFromFP (fp, SDL_TRUE);
 		System::GCExitBlocking ();
 
