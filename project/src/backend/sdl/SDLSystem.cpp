@@ -683,7 +683,8 @@ namespace lime {
 
 		System::GCEnterBlocking ();
 		lime::FILE_HANDLE* fp = lime::fdopen (fd, mode);
-		SDL_RWops *result = SDL_RWFromFP (fp:getFile(), SDL_TRUE);
+		// FILE_HANDLE has a getFile function
+		SDL_RWops *result = SDL_RWFromFP (fp->getFile(), SDL_TRUE);
 		System::GCExitBlocking ();
 
 		if (result) {
