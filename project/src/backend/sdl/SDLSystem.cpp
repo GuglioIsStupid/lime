@@ -680,7 +680,7 @@ namespace lime {
 
 	FILE_HANDLE *fdopen (int fd, const char *mode) {
 		// f not HX_WINDOWS or HX_SWITCH
-		#ifndef (HX_WINDOWS || HX_SWITCH)
+		#if !(defined(HX_WINDOWS) || defined(HX_SWITCH))
 
 		System::GCEnterBlocking ();
 		FILE* fp = lime::fdopen (fd, mode);
@@ -700,7 +700,7 @@ namespace lime {
 		FILE* result;
 
 		System::GCEnterBlocking ();
-		result = ::fdopen (fd, mode);
+		result = lime::fdopen (fd, mode);
 		System::GCExitBlocking ();
 
 		if (result) {
