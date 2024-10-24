@@ -683,7 +683,7 @@ namespace lime {
 		#ifndef HX_WINDOWS
 
 		System::GCEnterBlocking ();
-		FILE* fp = lime::fdopen (fd, mode);
+		FILE_HANDLE* fp = lime::fdopen (fd, mode);
 		SDL_RWops *result = SDL_RWFromFP (fp, SDL_TRUE);
 		System::GCExitBlocking ();
 
