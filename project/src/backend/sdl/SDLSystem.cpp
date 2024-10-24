@@ -679,12 +679,11 @@ namespace lime {
 
 
 	FILE_HANDLE *fdopen (int fd, const char *mode) {
-		// f not HX_WINDOWS or HX_SWITCH
-		#if !(defined(HX_WINDOWS) || defined(HX_SWITCH))
+		#ifndef HX_WINDOWS
 
 		System::GCEnterBlocking ();
-		FILE* fp = lime::fdopen (fd, mode);
-		SDL_RWops *result = SDL_RWFromFP (fp, SDL_TRUE);
+		lime::FILE_HANDLE* fp = lime::fdopen (fd, mode);
+		SDL_RWops *result = SDL_RWFromFP (fp:getFile(), SDL_TRUE);
 		System::GCExitBlocking ();
 
 		if (result) {
@@ -700,7 +699,7 @@ namespace lime {
 		FILE* result;
 
 		System::GCEnterBlocking ();
-		result = lime::fdopen (fd, mode);
+		result = ::fdopen (fd, mode);
 		System::GCExitBlocking ();
 
 		if (result) {
